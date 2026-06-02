@@ -1,9 +1,64 @@
-/* Custom styles */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+#plan-container {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+}
+
+.draggable-item {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    cursor: grab;
+    touch-action: none;
+    border-radius: 4px;
+    z-index: 10;
+    min-width: 60px;
+    min-height: 40px;
+    padding: 4px 8px;
+    text-align: center;
+}
+
+.draggable-item:active {
+    cursor: grabbing;
+}
+
+.draggable-item.selected {
+    box-shadow: 0 0 0 3px #3b82f6, 2px 2px 8px rgba(0,0,0,0.6);
+    z-index: 20;
+}
+
+/* Specific styles */
+.shelf-style {
+    background-color: #8b4513; /* Brown wood */
+    border: 2px solid #5c2e0b;
+    width: 14%;
+    height: 4%;
+}
+
+.table-style {
+    background-color: #3b82f6; /* Blue table */
+    border: 2px solid #1d4ed8;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+}
+
+.chair-style {
+    background-color: #6b7280; /* Gray chair */
+    border: 2px solid #374151;
+    width: 4%;
+    height: 4%;
+    border-radius: 50%;
 }
