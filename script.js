@@ -4,33 +4,56 @@ let itemCounter = 0;
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized.');
 
-    // Handle delete key
+    // Handle delete key (if not editing an input)
     document.addEventListener('keydown', (e) => {
-        if ((e.key === 'Delete' || e.key === 'Backspace') && selectedElement) {
-            selectedElement.remove();
-            selectedElement = null;
+        if ((e.key === 'Delete' || e.key === 'Backspace') && selectedElement && e.target.tagName !== 'INPUT' && e.target.tagName !== 'SELECT') {
+            deleteSelected();
         }
     });
 
     // Deselect when clicking outside
     document.addEventListener('mousedown', (e) => {
-        if (!e.target.closest('.draggable-item') && !e.target.closest('button')) {
+        if (!e.target.closest('.draggable-item') && !e.target.closest('aside')) {
             if (selectedElement) {
                 selectedElement.classList.remove('selected');
                 selectedElement = null;
+                updateEditorPanel();
             }
         }
     });
+
+    // Editor inputs event listeners
+    document.getElementById('edit-name').addEventListener('input', (e) => {
+        if (selectedElement) selectedElement.innerText = e.target.value;
+    });
+    document.getElementById('edit-color').addEventListener('input', (e) => {
+        if (selectedElement) selectedElement.style.backgroundColor = e.target.value;
+    });
+    document.getElementById('edit-width').addEventListener('input', (e) => {
+        if (selectedElement) selectedElement.style.width = e.target.value;
+    });
+    document.getElementById('edit-height').addEventListener('input', (e) => {
+        if (selectedElement) selectedElement.style.height = e.target.value;
+    });
+    document.getElementById('edit-shape').addEventListener('change', (e) => {
+        if (selectedElement) selectedElement.style.borderRadius = e.target.value;
+    });
 });
 
-window.addFurniture = (name, styleClass) => {
+window.addFurniture = (name, color, width, height, shape) => {
     const container = document.getElementById('plan-container');
     if (!container) return;
 
     const el = document.createElement('div');
-    el.className = `draggable-item ${styleClass}`;
+    el.className = `draggable-item`;
     el.innerText = name;
     el.id = `item-${itemCounter++}`;
+
+    // Styles
+    el.style.backgroundColor = color;
+    el.style.width = width;
+    el.style.height = height;
+    el.style.borderRadius = shape;
 
     // Initial position in center
     el.style.left = '45%';
@@ -41,12 +64,44 @@ window.addFurniture = (name, styleClass) => {
     selectElement(el);
 };
 
+window.deleteSelected = () => {
+    if (selectedElement) {
+        selectedElement.remove();
+        selectedElement = null;
+        updateEditorPanel();
+    }
+};
+
+// Convert rgb to hex for color input
+function rgbToHex(rgb) {
+    if (rgb.startsWith('#')) return rgb;
+    const match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    if (!match) return '#000000';
+    return "#" + (1 << 24 | parseInt(match[1]) << 16 | parseInt(match[2]) << 8 | parseInt(match[3])).toString(16).slice(1);
+}
+
+function updateEditorPanel() {
+    const panel = document.getElementById('editor-panel');
+    if (!selectedElement) {
+        panel.classList.add('hidden');
+        return;
+    }
+
+    panel.classList.remove('hidden');
+    document.getElementById('edit-name').value = selectedElement.innerText;
+    document.getElementById('edit-color').value = rgbToHex(selectedElement.style.backgroundColor);
+    document.getElementById('edit-width').value = selectedElement.style.width;
+    document.getElementById('edit-height').value = selectedElement.style.height;
+    document.getElementById('edit-shape').value = selectedElement.style.borderRadius;
+}
+
 function selectElement(el) {
     if (selectedElement) {
         selectedElement.classList.remove('selected');
     }
     selectedElement = el;
     el.classList.add('selected');
+    updateEditorPanel();
 }
 
 function makeDraggable(element) {

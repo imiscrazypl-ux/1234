@@ -21,24 +21,78 @@
 
     <main class="flex-grow flex overflow-hidden">
         <!-- Sidebar for tools -->
-        <aside class="w-64 bg-white border-r shadow-sm flex flex-col">
+        <aside class="w-80 bg-white border-r shadow-sm flex flex-col z-20">
             <div class="p-4 border-b">
-                <h2 class="text-lg font-semibold text-gray-700">Meble i Obiekty</h2>
-                <p class="text-sm text-gray-500 mt-1">Kliknij, aby dodać na plan</p>
+                <h2 class="text-lg font-semibold text-gray-700">Narzędzia</h2>
+                <p class="text-sm text-gray-500 mt-1">Zarządzaj planem</p>
             </div>
-            <div class="p-4 flex-grow overflow-y-auto space-y-4">
-                <button onclick="addFurniture('Regał', 'shelf-style')" class="w-full text-left px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded border border-amber-300 transition-colors">
-                    + Dodaj Regał
-                </button>
-                <button onclick="addFurniture('Stół', 'table-style')" class="w-full text-left px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-900 rounded border border-blue-300 transition-colors">
-                    + Dodaj Stół
-                </button>
-                <button onclick="addFurniture('Krzesło', 'chair-style')" class="w-full text-left px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded border border-gray-300 transition-colors">
-                    + Dodaj Krzesło
-                </button>
+
+            <div class="p-4 flex-grow overflow-y-auto space-y-6">
+                <!-- Add items section -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase">Dodaj gotowe</h3>
+                    <div class="space-y-2">
+                        <button onclick="addFurniture('Regał', '#8b4513', '14%', '4%', '4px')" class="w-full text-left px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded border border-amber-300 transition-colors">
+                            + Dodaj Regał
+                        </button>
+                        <button onclick="addFurniture('Stół', '#3b82f6', '10%', '10%', '50%')" class="w-full text-left px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-900 rounded border border-blue-300 transition-colors">
+                            + Dodaj Stół
+                        </button>
+                        <button onclick="addFurniture('Krzesło', '#6b7280', '4%', '4%', '50%')" class="w-full text-left px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded border border-gray-300 transition-colors">
+                            + Dodaj Krzesło
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase">Dodaj własny</h3>
+                    <button onclick="addFurniture('Nowy Obiekt', '#10b981', '8%', '8%', '4px')" class="w-full text-center px-4 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded shadow transition-colors">
+                        + Dodaj Własny Obiekt
+                    </button>
+                </div>
+
+                <!-- Edit item section -->
+                <div id="editor-panel" class="hidden border-t pt-4">
+                    <h3 class="text-sm font-bold text-blue-600 mb-3 uppercase">Edycja obiektu</h3>
+
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Nazwa</label>
+                            <input type="text" id="edit-name" class="w-full border p-2 rounded text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Kolor</label>
+                            <input type="color" id="edit-color" class="w-full h-8 p-0 border-0 rounded cursor-pointer">
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <div class="w-1/2">
+                                <label class="block text-xs text-gray-500 mb-1">Szerokość</label>
+                                <input type="text" id="edit-width" class="w-full border p-2 rounded text-sm" placeholder="np. 10%">
+                            </div>
+                            <div class="w-1/2">
+                                <label class="block text-xs text-gray-500 mb-1">Wysokość</label>
+                                <input type="text" id="edit-height" class="w-full border p-2 rounded text-sm" placeholder="np. 10%">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Kształt</label>
+                            <select id="edit-shape" class="w-full border p-2 rounded text-sm">
+                                <option value="4px">Prostokąt</option>
+                                <option value="50%">Koło</option>
+                            </select>
+                        </div>
+
+                        <button onclick="deleteSelected()" class="w-full mt-4 text-center px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded border border-red-300 transition-colors">
+                            Usuń obiekt
+                        </button>
+                    </div>
+                </div>
 
                 <div class="mt-8 pt-4 border-t border-gray-200">
-                    <p class="text-xs text-gray-500 mb-2">Wskazówka: Przeciągnij elementy aby je przemieścić. Zaznacz element i wciśnij klawisz Delete aby go usunąć.</p>
+                    <p class="text-xs text-gray-500 mb-2">Wskazówka: Przeciągnij elementy aby je przemieścić. Kliknij obiekt, aby go edytować.</p>
                 </div>
             </div>
         </aside>
