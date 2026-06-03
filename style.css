@@ -42,3 +42,14 @@ html, body {
     z-index: 20;
     border-color: #3b82f6;
 }
+
+.eraser-mask {
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    opacity: 0.95; /* blend closely with background */
+}
+
+.eraser-mask.selected {
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5) !important; /* light red highlight when selected so user can see it */
+}
