@@ -3,108 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interaktywny Plan Lokalu</title>
+    <title>KONESER Auto Skup Kasacja Złomowanie - PHU U Konesera Grzegorz Kuźma</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
     <!-- Navbar -->
-    <header class="bg-white shadow w-full z-50">
+    <header class="bg-white shadow fixed w-full top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-xl font-bold text-blue-600">Menedżer Planu</span>
+                    <a href="#" class="text-xl font-bold text-blue-600">PHU U Konesera</a>
                 </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Strona główna</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Usługi</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Kontakt</a>
+                </nav>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
+                        <span class="sr-only">Otwórz menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Strona główna</a>
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Usługi</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Kontakt</a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow flex overflow-hidden">
-        <!-- Sidebar for tools -->
-        <aside class="w-80 bg-white border-r shadow-sm flex flex-col z-20">
-            <div class="p-4 border-b">
-                <h2 class="text-lg font-semibold text-gray-700">Narzędzia</h2>
-                <p class="text-sm text-gray-500 mt-1">Zarządzaj planem</p>
-            </div>
-
-            <div class="p-4 flex-grow overflow-y-auto space-y-6">
-                <!-- Add items section -->
-                <div>
-                    <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase">Dodaj gotowe</h3>
-                    <div class="space-y-2">
-                        <button onclick="addFurniture('Regał', '#8b4513', '14%', '4%', '4px')" class="w-full text-left px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-900 rounded border border-amber-300 transition-colors">
-                            + Dodaj Regał
-                        </button>
-                        <button onclick="addFurniture('Stół', '#3b82f6', '10%', '10%', '50%')" class="w-full text-left px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-900 rounded border border-blue-300 transition-colors">
-                            + Dodaj Stół
-                        </button>
-                        <button onclick="addFurniture('Krzesło', '#6b7280', '4%', '4%', '50%')" class="w-full text-left px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded border border-gray-300 transition-colors">
-                            + Dodaj Krzesło
-                        </button>
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="bg-blue-600 text-white py-20 lg:py-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
+                    <span class="block">PHU U KONESERA</span>
+                    <span class="block text-blue-200">Grzegorz Kuźma</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-blue-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Profesjonalne złomowanie pojazdów, stacja demontażu, skup aut i metali. Szybko, bezpiecznie i gotówka od ręki. Działamy na terenie całego Dolnego Śląska!
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-md shadow">
+                        <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                            Skontaktuj się z nami
+                        </a>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div>
-                    <h3 class="text-sm font-bold text-gray-700 mb-3 uppercase">Dodaj własny</h3>
-                    <button onclick="addFurniture('Nowy Obiekt', '#10b981', '8%', '8%', '4px')" class="w-full text-center px-4 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded shadow transition-colors">
-                        + Dodaj Własny Obiekt
-                    </button>
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Dlaczego my?</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Nasze Usługi
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                        Oferujemy kompleksowe usługi w zakresie autokasacji.
+                    </p>
                 </div>
 
-                <!-- Edit item section -->
-                <div id="editor-panel" class="hidden border-t pt-4">
-                    <h3 class="text-sm font-bold text-blue-600 mb-3 uppercase">Edycja obiektu</h3>
-
-                    <div class="space-y-3">
-                        <div>
-                            <label class="block text-xs text-gray-500 mb-1">Nazwa</label>
-                            <input type="text" id="edit-name" class="w-full border p-2 rounded text-sm">
+                <div class="mt-10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Szybka wycena</h3>
+                            <p class="text-gray-600">Dokonujemy uczciwej i szybkiej wyceny Twojego pojazdu. Skontaktuj się z nami, aby poznać szczegóły.</p>
                         </div>
-
-                        <div>
-                            <label class="block text-xs text-gray-500 mb-1">Kolor</label>
-                            <input type="color" id="edit-color" class="w-full h-8 p-0 border-0 rounded cursor-pointer">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Darmowy transport</h3>
+                            <p class="text-gray-600">Odbieramy pojazdy własnym transportem z wyznaczonego miejsca bez dodatkowych opłat.</p>
                         </div>
-
-                        <div class="flex space-x-2">
-                            <div class="w-1/2">
-                                <label class="block text-xs text-gray-500 mb-1">Szerokość</label>
-                                <input type="text" id="edit-width" class="w-full border p-2 rounded text-sm" placeholder="np. 10%">
-                            </div>
-                            <div class="w-1/2">
-                                <label class="block text-xs text-gray-500 mb-1">Wysokość</label>
-                                <input type="text" id="edit-height" class="w-full border p-2 rounded text-sm" placeholder="np. 10%">
-                            </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Gotówka do ręki</h3>
+                            <p class="text-gray-600">Płacimy gotówką na miejscu po załatwieniu wszystkich niezbędnych formalności.</p>
                         </div>
-
-                        <div>
-                            <label class="block text-xs text-gray-500 mb-1">Kształt</label>
-                            <select id="edit-shape" class="w-full border p-2 rounded text-sm">
-                                <option value="4px">Prostokąt</option>
-                                <option value="50%">Koło</option>
-                            </select>
-                        </div>
-
-                        <button onclick="deleteSelected()" class="w-full mt-4 text-center px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded border border-red-300 transition-colors">
-                            Usuń obiekt
-                        </button>
                     </div>
                 </div>
-
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <p class="text-xs text-gray-500 mb-2">Wskazówka: Przeciągnij elementy aby je przemieścić. Kliknij obiekt, aby go edytować.</p>
-                </div>
             </div>
-        </aside>
+        </section>
 
-        <!-- Main Plan Area -->
-        <section class="flex-grow bg-gray-100 p-8 overflow-auto relative flex justify-center items-center">
-            <div id="plan-container" class="shadow-xl bg-white">
-                <img src="plan.jpg" alt="Plan lokalu" class="max-w-full h-auto max-h-[80vh] pointer-events-none">
-                <!-- Objects will be dynamically added here -->
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-extrabold text-gray-900">Kontakt</h2>
+                    <p class="mt-4 text-lg text-gray-500">Masz pytania? Chcesz zezłomować auto? Zadzwoń lub napisz do nas!</p>
+                    <div class="mt-8 bg-white p-8 rounded-lg shadow">
+                        <p class="text-xl font-bold text-gray-900 mb-4">PHU U KONESERA GRZEGORZ KUŹMA</p>
+                        <p class="text-gray-600 mb-2">Telefon: <strong>+48 512 512 227</strong> / <strong>+48 500 403 803</strong></p>
+                        <p class="text-gray-600 mb-2">Email: <strong>kmszrot@op.pl</strong></p>
+                        <p class="text-gray-600">Adres: <strong>ul. Ignacego Daszyńskiego 16G, 58-533 Mysłakowice (Dolny Śląsk)</strong></p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 PHU U KONESERA GRZEGORZ KUŹMA. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
